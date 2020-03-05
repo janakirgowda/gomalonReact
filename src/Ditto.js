@@ -2,12 +2,20 @@ import React, { Component } from "react";
 import "./App.css";
 import Logo from "./Logo.png";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import Navigation from "./Navigation.js";
+import {Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import Spa from "./Spa";
+import Salon from "./Salon";
+import Ayurveda from "./Ayurveda";
+import Star from "./Star";
+import TellyourFriends from "./TellyourFriends";
+
+
 
 class Ditto extends Component {
 
 render() {
-    // const images = ["./spa.jpg", "./spa1.jpg"];
-    // const imageList = images.map(image => <img src={image} alt="spa" />);
+    
 
     return (
       <div>
@@ -26,13 +34,12 @@ render() {
         </div>
 
         <div className="menu">
-          <a href="#Spa">Spa</a>
-          <a href="#Salon">Salon</a>
-          <a href="#Ayurveda">Ayurveda</a>
-          <a href="#Star">Star</a>
-          <a href="#Tell your friends">Tell your Friends</a>
+        <Navigation/>
+          
           <div className="menu-log">
-            <a href="#login">LOGIN</a>
+            <Router>
+              <Link to="/login">LOGIN</Link>
+            </Router>
           </div>
         </div>
 
@@ -48,6 +55,18 @@ render() {
         <div className="footer-div">
           <footer>FOOTER</footer>
         </div>
+        
+        <Router>
+          <Switch>
+          <Route path="/Spa" component={Spa} />
+          <Route path="/Salon" component={Salon} />
+          <Route path="/Ayurveda" component={Ayurveda} />
+          <Route path="/Star" component={Star} />
+          <Route path="/Tell your Friends" component={TellyourFriends} />
+          </Switch>
+          
+        </Router>
+        
       </div>
     );
   }
